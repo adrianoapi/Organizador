@@ -21,9 +21,12 @@ import javax.swing.JOptionPane;
 import javax.swing.JPasswordField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.awt.event.ActionEvent;
 
 import View.ViewHome;
+import View.Conexao;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 
@@ -37,8 +40,14 @@ public class ViewLogin {
 	/**
 	 * Launch the application.
 	 * @throws UnsupportedLookAndFeelException 
+	 * @throws SQLException 
 	 */
-	public static void main(String[] args) throws UnsupportedLookAndFeelException {
+	public static void main(String[] args) throws UnsupportedLookAndFeelException, SQLException {
+		
+		String  sql = "SELECT * FROM chronos.tb_pessoa LIMIT 10";
+		Conexao con = new Conexao();
+		con.conexao();
+		con.executeSQL(sql);
 		
 		// Midifica o layout da aplicação
 		try {
