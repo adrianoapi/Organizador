@@ -25,6 +25,7 @@ import java.awt.event.ActionEvent;
 
 import View.ViewHome;
 import javax.swing.SwingConstants;
+import java.awt.Font;
 
 
 public class ViewLogin {
@@ -75,27 +76,30 @@ public class ViewLogin {
 	 */
 	private void initialize() {
 		frame = new JFrame();
-		frame.setBounds(100, 100, 450, 300);
+		frame.setResizable(false);
+		frame.setBounds(400, 200, 429, 230);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
 		textLogin = new JTextField();
-		textLogin.setBounds(144, 78, 217, 37);
+		textLogin.setBounds(134, 37, 217, 37);
 		frame.getContentPane().add(textLogin);
 		textLogin.setColumns(10);
 		
 		textPassword = new JPasswordField();
-		textPassword.setBounds(144, 126, 217, 37);
+		textPassword.setBounds(134, 85, 217, 37);
 		frame.getContentPane().add(textPassword);
 		
-		JLabel lblLogin = new JLabel("Login");
+		JLabel lblLogin = new JLabel("Login:");
+		lblLogin.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblLogin.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblLogin.setBounds(55, 81, 79, 14);
+		lblLogin.setBounds(45, 40, 79, 34);
 		frame.getContentPane().add(lblLogin);
 		
-		JLabel lblPassword = new JLabel("Password");
+		JLabel lblPassword = new JLabel("Password:");
+		lblPassword.setFont(new Font("Tahoma", Font.PLAIN, 16));
 		lblPassword.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblPassword.setBounds(55, 129, 81, 14);
+		lblPassword.setBounds(45, 88, 81, 34);
 		frame.getContentPane().add(lblPassword);
 		
 		JButton btnEntrar = new JButton("Entrar");
@@ -105,14 +109,14 @@ public class ViewLogin {
 				
 				if(checkLogin(textLogin.getText(), new String(textPassword.getPassword()))) {
 					
-					JOptionPane.showMessageDialog(null,  "Autenticado com sucesso!");
+					//JOptionPane.showMessageDialog(null,  "Autenticado com sucesso!");
 					
 					frame.setVisible(false);
-					ViewHome info = new ViewHome();
-					ViewHome.main(null);
+					ViewDashboard dashboard = new ViewDashboard();
+					ViewDashboard.main(null);
 					
-//					JFrame newFrame = new JFrame();
-//					newFrame.setVisible(true);
+					//JFrame newFrame = new JFrame();
+					//newFrame.setVisible(true);
 
 
 		            
@@ -123,12 +127,12 @@ public class ViewLogin {
 				
 			}
 		});
-		btnEntrar.setBounds(272, 174, 89, 37);
+		btnEntrar.setBounds(262, 133, 89, 37);
 		frame.getContentPane().add(btnEntrar);
 	}
 	
 	public boolean checkLogin(String login, String password){
-		return login.contentEquals("admin") && password.contentEquals("123");
+		return login.contentEquals("admin") && (password.contentEquals("123") || password.contentEquals("admin"));
 	}
 	
 }
