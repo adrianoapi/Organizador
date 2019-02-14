@@ -41,13 +41,13 @@ public class Conexao {
 		
 	}
 	
-	void executeSQL(String sql) throws SQLException {
+	ResultSet executeSQL(String sql) throws SQLException {
 		PreparedStatement stmt = con.prepareStatement(sql);
-		ResultSet rs = stmt.executeQuery();
+		return stmt.executeQuery();
 				
-		while(rs.next()) {
-			System.out.println(rs.getInt("pessoa_id")+ " - " + rs.getString("pessoa_nome") +" \n ");
-		}
+//		while(rs.next()) {
+//			System.out.println(rs.getInt("pessoa_id")+ " - " + rs.getString("pessoa_nome") +" \n ");
+//		}
 	}
 	
 	
