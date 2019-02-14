@@ -8,6 +8,10 @@ import javax.swing.JMenu;
 import javax.swing.JButton;
 import javax.swing.JMenuItem;
 import java.awt.ScrollPane;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+
+import memoria.Principal;
 
 public class ViewDashboard {
 
@@ -63,6 +67,14 @@ public class ViewDashboard {
 		menuBar.add(mnPerfil);
 		
 		JMenuItem mntmSair = new JMenuItem("Sair");
+		mntmSair.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				//frame.setVisible(false);
+				Principal principal = new Principal();
+				principal.setVisible(true);
+				Principal.main(null);
+			}
+		});
 		mnPerfil.add(mntmSair);
 		
 		JMenuItem mntmAlterarSenha = new JMenuItem("Configuracoes");
